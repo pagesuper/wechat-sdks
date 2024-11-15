@@ -1,7 +1,7 @@
 {
   "name": "wechat-sdks",
-  "version": "1.0.0",
-  "description": "WeChat SDK",
+  "version": "1.0.1",
+  "description": "WeChat SDKs",
   "author": "happy",
   "private": false,
   "license": "MIT",
