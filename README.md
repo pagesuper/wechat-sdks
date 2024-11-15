@@ -1,4 +1,4 @@
-# wechat-sdk
+# wechat-sdks
 
 ## Build Setup
 

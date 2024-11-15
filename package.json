@@ -1,12 +1,12 @@
 {
-  "name": "wechat-sdk",
+  "name": "wechat-sdks",
   "version": "1.0.0",
   "description": "WeChat SDK",
   "author": "happy",
   "private": false,
   "license": "MIT",
   "repository": {
-    "url": "https://github.com/pagesuper/wechat-sdk"
+    "url": "https://github.com/pagesuper/wechat-sdks"
   },
   "_moduleAliases": {
     "@root": "."
