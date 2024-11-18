@@ -60,6 +60,7 @@ const weappUtil = {
     const url = basicUtil.buildUrl(options.url, params as AnyObject);
     const contentType = options.contentType ?? 'application/json';
     const dataType = options.dataType ?? 'json';
+    const method = options.method ?? 'GET';
 
     const body = (() => {
       const data = normalizeRequestData(options.data);
@@ -71,8 +72,10 @@ const weappUtil = {
       return JSON.stringify(data);
     })();
 
+    console.log('weappUtil.request: ...', url, body);
+
     const response = await fetch(url, {
-      method: options.method,
+      method,
       body,
       headers: {
         'Content-Type': contentType,

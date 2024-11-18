@@ -78,8 +78,12 @@ interface GetPluginOpenPIdData extends CommonResponseData {
     /** 插件用户的唯一标识 */
     openpid: string;
 }
-declare const userApi: {
-    /** 获取手机号：https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-info/phone-number/getPhoneNumber.html */
+declare const weappUserApi: {
+    /**
+     * 获取手机号：
+     * - 服务API；https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-info/phone-number/getPhoneNumber.html
+     * - 前端API：https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html
+     */
     getPhoneNumber: (options: Request<GetUserPhonenumberRequestData, GetUserPhonenumberRequestParams>) => Promise<Response<GetUserPhonenumberData>>;
     /** 获取用户加密信息：https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-info/internet/getUserEncryptKey.html */
     getUserEncryptKey: (options: Request<GetUserEncryptKeyRequestData, GetUserEncryptKeyRequestParams>) => Promise<Response<GetUserEncryptKeyData>>;
@@ -90,4 +94,4 @@ declare const userApi: {
     /** 获取插件 openpid：https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-info/basic-info/getPluginOpenPId.html */
     getPluginOpenPId: (options: Request<GetPluginOpenPIdRequestData, GetPluginOpenPIdRequestParams>) => Promise<Response<GetPluginOpenPIdData>>;
 };
-export default userApi;
+export default weappUserApi;

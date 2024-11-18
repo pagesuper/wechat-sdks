@@ -1,5 +1,5 @@
 // import assert from 'power-assert';
-// import weappOpenApi from '../../../../src/server/weapp/open-api.api';
+// import weappOpenApi from '../../../../src/server/weapp/weapp-open-api.api';
 // import testConfig from '../../../test.config';
 
 // describe('weappOpenApi.clearQuota', () => {

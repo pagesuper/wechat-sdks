@@ -1,9 +1,7 @@
 import weappUtil, { CommonRequestParams, CommonResponseData, Request, Response } from '../../utils/weapp.util';
 
 // ///// code2session /////
-interface Code2SessionRequestParams extends CommonRequestParams {}
-
-interface Code2SessionRequestData {
+interface Code2SessionRequestParams {
   /** 小程序 appId */
   appid: string;
   /** 小程序 appSecret */
@@ -11,6 +9,8 @@ interface Code2SessionRequestData {
   /** 登录时获取的 code，可通过wx.login获取 */
   js_code: string;
 }
+
+interface Code2SessionRequestData {}
 
 interface Code2SessionData extends CommonResponseData {
   /** 用户唯一标识 */
@@ -49,6 +49,7 @@ interface ResetUserSessionKeyData extends CommonResponseData {
 }
 
 const weappLoginApi = {
+  /** 小程序登录：https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-login/code2Session.html */
   code2Session: async (
     options: Request<Code2SessionRequestData, Code2SessionRequestParams>,
   ): Promise<Response<Code2SessionData>> => {
@@ -65,6 +66,7 @@ const weappLoginApi = {
     });
   },
 
+  /** 检验登录态 https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-login/checkSessionKey.html */
   checkSessionKey: async (
     options: Request<CheckSessionKeyRequestData, CheckSessionKeyRequestParams>,
   ): Promise<Response<CheckSessionKeyData>> => {
@@ -81,6 +83,7 @@ const weappLoginApi = {
     });
   },
 
+  /** 重置登录态 https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-login/ResetUserSessionKey.html */
   resetUserSessionKey: async (
     options: Request<ResetUserSessionKeyRequestData, ResetUserSessionKeyRequestParams>,
   ): Promise<Response<ResetUserSessionKeyData>> => {
@@ -88,6 +91,12 @@ const weappLoginApi = {
       url: 'https://api.weixin.qq.com/wxa/resetusersessionkey',
       method: 'GET',
       ...options,
+      normalizeRequestParams(params) {
+        return {
+          ...params,
+          sig_method: 'hmac_sha256',
+        };
+      },
     });
   },
 };

@@ -94,8 +94,12 @@ interface GetPluginOpenPIdData extends CommonResponseData {
   openpid: string;
 }
 
-const userApi = {
-  /** 获取手机号：https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-info/phone-number/getPhoneNumber.html */
+const weappUserApi = {
+  /**
+   * 获取手机号：
+   * - 服务API；https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-info/phone-number/getPhoneNumber.html
+   * - 前端API：https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html
+   */
   getPhoneNumber: async (
     options: Request<GetUserPhonenumberRequestData, GetUserPhonenumberRequestParams>,
   ): Promise<Response<GetUserPhonenumberData>> => {
@@ -151,4 +155,4 @@ const userApi = {
   },
 };
 
-export default userApi;
+export default weappUserApi;

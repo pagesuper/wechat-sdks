@@ -1,13 +1,13 @@
 import { CommonRequestParams, CommonResponseData, Request, Response } from '../../utils/weapp.util';
-interface Code2SessionRequestParams extends CommonRequestParams {
-}
-interface Code2SessionRequestData {
+interface Code2SessionRequestParams {
     /** 小程序 appId */
     appid: string;
     /** 小程序 appSecret */
     secret: string;
     /** 登录时获取的 code，可通过wx.login获取 */
     js_code: string;
+}
+interface Code2SessionRequestData {
 }
 interface Code2SessionData extends CommonResponseData {
     /** 用户唯一标识 */
@@ -40,8 +40,11 @@ interface ResetUserSessionKeyData extends CommonResponseData {
     session_key: string;
 }
 declare const weappLoginApi: {
+    /** 小程序登录：https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-login/code2Session.html */
     code2Session: (options: Request<Code2SessionRequestData, Code2SessionRequestParams>) => Promise<Response<Code2SessionData>>;
+    /** 检验登录态 https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-login/checkSessionKey.html */
     checkSessionKey: (options: Request<CheckSessionKeyRequestData, CheckSessionKeyRequestParams>) => Promise<Response<CheckSessionKeyData>>;
+    /** 重置登录态 https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-login/ResetUserSessionKey.html */
     resetUserSessionKey: (options: Request<ResetUserSessionKeyRequestData, ResetUserSessionKeyRequestParams>) => Promise<Response<ResetUserSessionKeyData>>;
 };
 export default weappLoginApi;
