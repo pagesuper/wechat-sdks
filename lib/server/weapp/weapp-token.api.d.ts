@@ -1,18 +1,32 @@
-import { Result } from '../../interfaces/result.interface';
-export interface GetAccessTokenOptions {
+import { Request, Response } from '../../utils/weapp.util';
+export interface GetAccessTokenRequestParams {
     appid: string;
     secret: string;
 }
-export interface GetStableAccessTokenOptions extends GetAccessTokenOptions {
+export interface GetAccessTokenRequestData {
+    appid: string;
+    secret: string;
+}
+export interface GetStableAccessTokenRequestData extends GetAccessTokenRequestData {
     /** 强制刷新：默认为 false */
-    forceRefresh?: boolean;
+    force_refresh?: boolean;
 }
 export interface GetAccessTokenData {
-    accessToken: string;
-    expiresIn: number;
+    access_token: string;
+    expires_in: number;
 }
 declare const weappTokenApi: {
-    getAccessToken: (options: GetAccessTokenOptions) => Promise<Result<GetAccessTokenData>>;
-    getStableAccessToken: (options: GetStableAccessTokenOptions) => Promise<Result<GetAccessTokenData>>;
+    /**
+     * 获取微信小程序的 Access Token
+     * @param options
+     * @returns
+     */
+    getAccessToken: (options: Request<undefined, GetAccessTokenRequestParams>) => Promise<Response<GetAccessTokenData>>;
+    /**
+     * 获取微信小程序的稳定 Access Token
+     * @param options
+     * @returns
+     */
+    getStableAccessToken: (options: Request<GetStableAccessTokenRequestData, undefined>) => Promise<Response<GetAccessTokenData>>;
 };
 export default weappTokenApi;
