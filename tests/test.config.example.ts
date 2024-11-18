@@ -1,6 +1,9 @@
 const testConfig = {
-  appid: 'xxx',
-  secret: 'xxx',
+  weapp: {
+    appid: 'xxx',
+    secret: 'xxx',
+    access_token: 'xxx',
+  },
 };
 
 export default testConfig;
