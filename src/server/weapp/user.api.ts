@@ -85,10 +85,12 @@ interface CheckEncryptedDataData extends CommonResponseData {
 interface GetPluginOpenPIdRequestParams extends CommonRequestParams {}
 
 interface GetPluginOpenPIdRequestData {
+  /** 通过 wx.pluginLogin 获得的插件用户标志凭证 code，有效时间为5分钟，一个 code 只能获取一次 openpid。 */
   code: string;
 }
 
 interface GetPluginOpenPIdData extends CommonResponseData {
+  /** 插件用户的唯一标识 */
   openpid: string;
 }
 
@@ -137,6 +139,7 @@ const userApi = {
     });
   },
 
+  /** 获取插件 openpid：https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-info/basic-info/getPluginOpenPId.html */
   getPluginOpenPId: async (
     options: Request<GetPluginOpenPIdRequestData, GetPluginOpenPIdRequestParams>,
   ): Promise<Response<GetPluginOpenPIdData>> => {
