@@ -1,3 +1,4 @@
+/// <reference types="node" />
 export interface AnyObject {
     [key: string]: any;
 }
@@ -14,7 +15,7 @@ export interface RequestOptions<T, P, S> extends Request<T, P> {
     /**
      * @default application/json
      */
-    contentType?: 'application/json' | 'application/x-www-form-urlencoded';
+    contentType?: 'application/json' | 'application/x-www-form-urlencoded' | 'multipart/form-data';
     /**
      * @default json
      */
@@ -37,11 +38,17 @@ export interface Response<S> {
 export interface CommonRequestParams {
     access_token: string;
 }
+export interface CommonImageData {
+    img_url?: string;
+    img?: Buffer;
+}
 export interface CommonResponseData {
     errcode: number;
     errmsg: string;
 }
 declare const weappUtil: {
     request: <T, P, S>(options: RequestOptions<T, P, S>) => Promise<Response<S>>;
+    /** 规范化图片数据 */
+    normalizeImageData: (data: CommonImageData) => Promise<FormData>;
 };
 export default weappUtil;

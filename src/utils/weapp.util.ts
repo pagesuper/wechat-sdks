@@ -1,5 +1,6 @@
 import basicUtil from 'almighty-tool/lib/utils/basic.util';
 import qs from 'qs';
+import requestUtil from './request.util';
 
 export interface AnyObject {
   [key: string]: any;
@@ -19,7 +20,7 @@ export interface RequestOptions<T, P, S> extends Request<T, P> {
   /**
    * @default application/json
    */
-  contentType?: 'application/json' | 'application/x-www-form-urlencoded';
+  contentType?: 'application/json' | 'application/x-www-form-urlencoded' | 'multipart/form-data';
   /**
    * @default json
    */
@@ -45,6 +46,11 @@ export interface CommonRequestParams {
   access_token: string;
 }
 
+export interface CommonImageData {
+  img_url?: string;
+  img?: Buffer;
+}
+
 export interface CommonResponseData {
   errcode: number;
   errmsg: string;
@@ -67,6 +73,10 @@ const weappUtil = {
 
       if (contentType === 'application/x-www-form-urlencoded') {
         return qs.stringify(data);
+      }
+
+      if (contentType === 'multipart/form-data') {
+        return data as FormData;
       }
 
       return JSON.stringify(data);
@@ -143,6 +153,23 @@ const weappUtil = {
       code: `HTTPCode#${response.status}`,
       message: '',
     };
+  },
+
+  /** 规范化图片数据 */
+  normalizeImageData: async (data: CommonImageData): Promise<FormData> => {
+    let imgBuffer: Buffer | undefined = data.img;
+
+    if (data.img_url && !imgBuffer) {
+      imgBuffer = await requestUtil.getFileBuffer(data.img_url);
+    }
+
+    const formData = new FormData();
+
+    if (imgBuffer) {
+      formData.append('img', new Blob([imgBuffer]), 'img');
+    }
+
+    return formData;
   },
 };
 
