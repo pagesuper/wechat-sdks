@@ -94,6 +94,22 @@ weappSafetyApi.msgSecCheck({ ... });
 weappSafetyApi.mediaCheckAsync({ ... });
 /** 内容安全-用户风险等级 */
 weappSafetyApi.getUserRiskRank({ ... });
+
+// 图像识别API
+import weappOcrApi from 'wechat-sdks/lib/server/weapp/weapp-orc.api';
+
+/** 通用印刷体识别 */
+weappOcrApi.printedTextOCR({ ... });
+/** 行驶证识别 */
+weappOcrApi.vehicleLicenseOCR({ ... });
+/** 驾驶证识别 */
+weappOcrApi.driverLicenseOCR({ ... });
+/** 身份证识别 */
+weappOcrApi.idCardOCR({ ... });
+/** 银行卡识别 */
+weappOcrApi.bankCardOCR({ ... });
+/** 营业执照识别 */
+weappOcrApi.businessLicenseOCR({ ... });
 ```
 
 ## 待开发API
