@@ -1,10 +1,13 @@
 # wechat-sdks
 
+- 服务器端接口(能在服务器端快捷的调用腾讯的服务): weapp(微信小程序 - 已实现部分), wecom(企业微信 - 尚未实现)
+- 客户端接口(能在客户端快捷的调用腾讯微信相关SDK): weapp(微信小程序 - 尚未实现), wecom(企业微信 - 尚未实现)
+
 ## 插件使用文档
 
 ```bash
 # 要求
-# node >= 18.0.0
+# 服务器端：node >= 18.0.0
 
 # 安装
 yarn add wechat-sdks
@@ -81,6 +84,16 @@ weappQRCodeApi.getQRCode({ ... });
 weappQRCodeApi.getUnlimitedQRCode({ ... });
 /** 创建二维码 */
 weappQRCodeApi.createQRCode({ ... });
+
+// 内容安全API
+import weappSafetyApi from 'wechat-sdks/lib/server/weapp/weapp-safety.api';
+
+/** 内容安全-文本内容安全检测 */
+weappSafetyApi.msgSecCheck({ ... });
+/** 内容安全-图片内容安全检测 */
+weappSafetyApi.mediaCheckAsync({ ... });
+/** 内容安全-用户风险等级 */
+weappSafetyApi.getUserRiskRank({ ... });
 ```
 
 ## 待开发API
@@ -88,7 +101,7 @@ weappQRCodeApi.createQRCode({ ... });
 ### 服务器端：微信小程序API(weapp)
 
 ```ts
-
+// ...
 ```
 
 ## Build Setup

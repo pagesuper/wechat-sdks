@@ -11,7 +11,7 @@
 //       params: {
 //         appid: testConfig.weapp.appid,
 //         secret: testConfig.weapp.secret,
-//         js_code: '0f1TB9Ga13zQwI0QUzHa1awsLQ1TB9GX',
+//         js_code: '0a1L2C100AROdT1B0R000hWMCv2L2C1R',
 //       },
 //     });
 
