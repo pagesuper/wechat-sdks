@@ -21,8 +21,6 @@ export interface GetQRCodeRequestData {
     env_version?: 'release' | 'trial' | 'develop';
 }
 export interface GetQRCodeData extends CommonResponseData {
-    /** 图片 Buffer */
-    buffer: Buffer;
 }
 export interface GetUnlimitedQRCodeRequestParams extends CommonRequestParams {
 }
@@ -49,8 +47,6 @@ export interface GetUnlimitedQRCodeRequestData {
     is_hyaline?: boolean;
 }
 export interface GetUnlimitedQRCodeData extends CommonResponseData {
-    /** 图片 Buffer */
-    buffer: Buffer;
 }
 export interface CreateQRCodeRequestParams extends CommonRequestParams {
 }
@@ -61,8 +57,6 @@ export interface CreateQRCodeRequestData {
     width?: number;
 }
 export interface CreateQRCodeData extends CommonResponseData {
-    /** 图片 Buffer */
-    buffer: Buffer;
 }
 declare const weappQRCodeApi: {
     /**
@@ -71,19 +65,19 @@ declare const weappQRCodeApi: {
      * @param options
      * @returns
      */
-    getQRCode: (options: Request<GetQRCodeRequestData, GetQRCodeRequestParams>) => Promise<Response<GetQRCodeData>>;
+    getQRCode: (options: Request<GetQRCodeRequestData, GetQRCodeRequestParams>) => Promise<Response<GetQRCodeData | Buffer>>;
     /**
      * 获取小程序码（永久有效） https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/qrcode-link/qr-code/getUnlimitedQRCode.html
      * 该接口用于获取小程序码，适用于需要的码数量极多的业务场景。通过该接口生成的小程序码，永久有效，数量暂无限制。
      * @param options`
      * @returns
      */
-    getUnlimitedQRCode: (options: Request<GetUnlimitedQRCodeRequestData, GetUnlimitedQRCodeRequestParams>) => Promise<Response<GetUnlimitedQRCodeData>>;
+    getUnlimitedQRCode: (options: Request<GetUnlimitedQRCodeRequestData, GetUnlimitedQRCodeRequestParams>) => Promise<Response<GetUnlimitedQRCodeData | Buffer>>;
     /**
      * 创建二维码 https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/qrcode-link/qr-code/createQRCode.html
      * @param options
      * @returns
      */
-    createQRCode: (options: Request<CreateQRCodeRequestData, CreateQRCodeRequestParams>) => Promise<Response<CreateQRCodeData>>;
+    createQRCode: (options: Request<CreateQRCodeRequestData, CreateQRCodeRequestParams>) => Promise<Response<CreateQRCodeData | Buffer>>;
 };
 export default weappQRCodeApi;

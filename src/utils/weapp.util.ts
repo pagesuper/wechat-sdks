@@ -23,7 +23,7 @@ export interface RequestOptions<T, P, S> extends Request<T, P> {
   /**
    * @default json
    */
-  dataType?: 'json';
+  dataType?: 'json' | 'buffer';
   timeout?: number;
   /** 规范化请求参数 */
   normalizeRequestParams?: (params?: undefined | P) => AnyObject;
@@ -72,7 +72,7 @@ const weappUtil = {
       return JSON.stringify(data);
     })();
 
-    console.log('weappUtil.request: ...', url, body);
+    // console.log('weappUtil.request: ...', url, body);
 
     const response = await fetch(url, {
       method,
@@ -85,6 +85,16 @@ const weappUtil = {
     const originData = await (async () => {
       if (dataType === 'json') {
         return await response.json();
+      }
+
+      if (dataType === 'buffer') {
+        const result = await response.arrayBuffer();
+
+        try {
+          return JSON.parse(Buffer.from(result).toString('utf-8'));
+        } catch (error) {
+          return result;
+        }
       }
 
       return undefined;

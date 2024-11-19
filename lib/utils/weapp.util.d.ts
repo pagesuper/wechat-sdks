@@ -18,7 +18,7 @@ export interface RequestOptions<T, P, S> extends Request<T, P> {
     /**
      * @default json
      */
-    dataType?: 'json';
+    dataType?: 'json' | 'buffer';
     timeout?: number;
     /** 规范化请求参数 */
     normalizeRequestParams?: (params?: undefined | P) => AnyObject;

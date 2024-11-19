@@ -22,10 +22,7 @@ export interface GetQRCodeRequestData {
   env_version?: 'release' | 'trial' | 'develop';
 }
 
-export interface GetQRCodeData extends CommonResponseData {
-  /** 图片 Buffer */
-  buffer: Buffer;
-}
+export interface GetQRCodeData extends CommonResponseData {}
 
 // ///// getUnlimitedQRCode /////
 export interface GetUnlimitedQRCodeRequestParams extends CommonRequestParams {}
@@ -53,10 +50,7 @@ export interface GetUnlimitedQRCodeRequestData {
   is_hyaline?: boolean;
 }
 
-export interface GetUnlimitedQRCodeData extends CommonResponseData {
-  /** 图片 Buffer */
-  buffer: Buffer;
-}
+export interface GetUnlimitedQRCodeData extends CommonResponseData {}
 
 // ///// createQRCode /////
 export interface CreateQRCodeRequestParams extends CommonRequestParams {}
@@ -68,10 +62,7 @@ export interface CreateQRCodeRequestData {
   width?: number;
 }
 
-export interface CreateQRCodeData extends CommonResponseData {
-  /** 图片 Buffer */
-  buffer: Buffer;
-}
+export interface CreateQRCodeData extends CommonResponseData {}
 
 const weappQRCodeApi = {
   /**
@@ -80,10 +71,13 @@ const weappQRCodeApi = {
    * @param options
    * @returns
    */
-  getQRCode: async (options: Request<GetQRCodeRequestData, GetQRCodeRequestParams>): Promise<Response<GetQRCodeData>> => {
-    return weappUtil.request<GetQRCodeRequestData, GetQRCodeRequestParams, GetQRCodeData>({
+  getQRCode: async (
+    options: Request<GetQRCodeRequestData, GetQRCodeRequestParams>,
+  ): Promise<Response<GetQRCodeData | Buffer>> => {
+    return weappUtil.request<GetQRCodeRequestData, GetQRCodeRequestParams, GetQRCodeData | Buffer>({
       url: 'https://api.weixin.qq.com/wxa/getwxacode',
       method: 'POST',
+      dataType: 'buffer',
       ...options,
     });
   },
@@ -96,10 +90,11 @@ const weappQRCodeApi = {
    */
   getUnlimitedQRCode: async (
     options: Request<GetUnlimitedQRCodeRequestData, GetUnlimitedQRCodeRequestParams>,
-  ): Promise<Response<GetUnlimitedQRCodeData>> => {
-    return weappUtil.request<GetUnlimitedQRCodeRequestData, GetUnlimitedQRCodeRequestParams, GetUnlimitedQRCodeData>({
+  ): Promise<Response<GetUnlimitedQRCodeData | Buffer>> => {
+    return weappUtil.request<GetUnlimitedQRCodeRequestData, GetUnlimitedQRCodeRequestParams, GetUnlimitedQRCodeData | Buffer>({
       url: 'https://api.weixin.qq.com/wxa/getwxacodeunlimit',
       method: 'POST',
+      dataType: 'buffer',
       ...options,
     });
   },
@@ -111,10 +106,11 @@ const weappQRCodeApi = {
    */
   createQRCode: async (
     options: Request<CreateQRCodeRequestData, CreateQRCodeRequestParams>,
-  ): Promise<Response<CreateQRCodeData>> => {
-    return weappUtil.request<CreateQRCodeRequestData, CreateQRCodeRequestParams, CreateQRCodeData>({
+  ): Promise<Response<CreateQRCodeData | Buffer>> => {
+    return weappUtil.request<CreateQRCodeRequestData, CreateQRCodeRequestParams, CreateQRCodeData | Buffer>({
       url: 'https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode',
       method: 'POST',
+      dataType: 'buffer',
       ...options,
     });
   },
