@@ -5,6 +5,12 @@
   "author": "happy",
   "private": false,
   "license": "MIT",
+  "keywords": [
+    "wechat",
+    "weapp",
+    "wecom",
+    "sdk"
+  ],
   "repository": {
     "url": "https://github.com/pagesuper/wechat-sdks"
   },
@@ -33,7 +39,7 @@
     "*.{css,scss}": "stylelint --fix"
   },
   "dependencies": {
-    "almighty-tool": ">=0.0.13"
+    "almighty-tool": ">=0.0.15"
   },
   "devDependencies": {
     "@babel/plugin-syntax-typescript": "7.20.0",
