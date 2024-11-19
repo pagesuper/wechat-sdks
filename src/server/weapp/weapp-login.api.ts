@@ -1,7 +1,7 @@
 import weappUtil, { CommonRequestParams, CommonResponseData, Request, Response } from '../../utils/weapp.util';
 
 // ///// code2session /////
-interface Code2SessionRequestParams {
+export interface Code2SessionRequestParams {
   /** 小程序 appId */
   appid: string;
   /** 小程序 appSecret */
@@ -10,9 +10,9 @@ interface Code2SessionRequestParams {
   js_code: string;
 }
 
-interface Code2SessionRequestData {}
+export interface Code2SessionRequestData {}
 
-interface Code2SessionData extends CommonResponseData {
+export interface Code2SessionData extends CommonResponseData {
   /** 用户唯一标识 */
   openid: string;
   /** 会话密钥 */
@@ -22,28 +22,29 @@ interface Code2SessionData extends CommonResponseData {
 }
 
 // ///// check_session_key /////
-interface CheckSessionKeyRequestParams extends CommonRequestParams {
+
+export interface CheckSessionKeyRequestParams extends CommonRequestParams {
   /** 用户唯一标识符 */
   openid: string;
   /** 用户登录态签名，用session_key对空字符串签名得到的结果。即 signature = hmac_sha256(session_key, "") */
   signature: string;
 }
 
-interface CheckSessionKeyRequestData {}
+export interface CheckSessionKeyRequestData {}
 
-interface CheckSessionKeyData extends CommonResponseData {}
+export interface CheckSessionKeyData extends CommonResponseData {}
 
 // ///// reset_user_session_key /////
-interface ResetUserSessionKeyRequestParams extends CommonRequestParams {
+export interface ResetUserSessionKeyRequestParams extends CommonRequestParams {
   /** 用户唯一标识符 */
   openid: string;
   /** 用户登录态签名，用session_key对空字符串签名得到的结果。即 signature = hmac_sha256(session_key, "") */
   signature: string;
 }
 
-interface ResetUserSessionKeyRequestData {}
+export interface ResetUserSessionKeyRequestData {}
 
-interface ResetUserSessionKeyData extends CommonResponseData {
+export interface ResetUserSessionKeyData extends CommonResponseData {
   openid: string;
   session_key: string;
 }

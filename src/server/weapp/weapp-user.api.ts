@@ -1,16 +1,16 @@
 import weappUtil, { CommonRequestParams, CommonResponseData, Request, Response } from '../../utils/weapp.util';
 
 // ///// get_user_phonenumber /////
-interface GetUserPhonenumberRequestParams extends CommonRequestParams {}
+export interface GetUserPhonenumberRequestParams extends CommonRequestParams {}
 
-interface GetUserPhonenumberRequestData {
+export interface GetUserPhonenumberRequestData {
   /** 通过：https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html 获取的code */
   code: string;
   /** 用户唯一标识符 */
   openid?: string;
 }
 
-interface GetUserPhonenumberData extends CommonResponseData {
+export interface GetUserPhonenumberData extends CommonResponseData {
   phone_info: {
     phoneNumber: string;
     purePhoneNumber: string;
@@ -23,7 +23,7 @@ interface GetUserPhonenumberData extends CommonResponseData {
 }
 
 // ///// get_user_encrypt_key /////
-interface GetUserEncryptKeyRequestParams extends CommonRequestParams {
+export interface GetUserEncryptKeyRequestParams extends CommonRequestParams {
   /** 用户唯一标识符 */
   openid: string;
   /** 用户登录态签名，用session_key对空字符串签名得到的结果。即 signature = hmac_sha256(session_key, "") */
@@ -32,9 +32,9 @@ interface GetUserEncryptKeyRequestParams extends CommonRequestParams {
   sig_method: string;
 }
 
-interface GetUserEncryptKeyRequestData {}
+export interface GetUserEncryptKeyRequestData {}
 
-interface GetUserEncryptKeyData extends CommonResponseData {
+export interface GetUserEncryptKeyData extends CommonResponseData {
   /** 用户最近三次的加密key列表 */
   key_info_list: {
     /** 加密密钥 */
@@ -51,7 +51,7 @@ interface GetUserEncryptKeyData extends CommonResponseData {
 }
 
 // ///// get_paid_unionid /////
-interface GetPaidUnionidRequestParams extends CommonRequestParams {
+export interface GetPaidUnionidRequestParams extends CommonRequestParams {
   /** 用户唯一标识符 */
   openid: string;
   /** 微信支付订单号 */
@@ -62,34 +62,34 @@ interface GetPaidUnionidRequestParams extends CommonRequestParams {
   out_trade_no: string;
 }
 
-interface GetPaidUnionidRequestData {}
+export interface GetPaidUnionidRequestData {}
 
-interface GetPaidUnionidData extends CommonResponseData {
+export interface GetPaidUnionidData extends CommonResponseData {
   /** 用户唯一标识符 */
   unionid: string;
 }
 
 // ///// check_encrypted_data /////
-interface CheckEncryptedDataRequestParams extends CommonRequestParams {}
+export interface CheckEncryptedDataRequestParams extends CommonRequestParams {}
 
-interface CheckEncryptedDataRequestData {
+export interface CheckEncryptedDataRequestData {
   encrypted_msg_hash: string;
 }
 
-interface CheckEncryptedDataData extends CommonResponseData {
+export interface CheckEncryptedDataData extends CommonResponseData {
   vaild: boolean;
   create_time: number;
 }
 
 // ///// get_plugin_open_pid /////
-interface GetPluginOpenPIdRequestParams extends CommonRequestParams {}
+export interface GetPluginOpenPIdRequestParams extends CommonRequestParams {}
 
-interface GetPluginOpenPIdRequestData {
+export interface GetPluginOpenPIdRequestData {
   /** 通过 wx.pluginLogin 获得的插件用户标志凭证 code，有效时间为5分钟，一个 code 只能获取一次 openpid。 */
   code: string;
 }
 
-interface GetPluginOpenPIdData extends CommonResponseData {
+export interface GetPluginOpenPIdData extends CommonResponseData {
   /** 插件用户的唯一标识 */
   openpid: string;
 }

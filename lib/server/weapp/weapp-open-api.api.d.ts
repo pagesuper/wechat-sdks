@@ -1,17 +1,17 @@
 import { CommonRequestParams, CommonResponseData, Request, Response } from '../../utils/weapp.util';
-interface ClearQuotaRequestParams extends CommonRequestParams {
+export interface ClearQuotaRequestParams extends CommonRequestParams {
 }
-interface ClearQuotaRequestData {
+export interface ClearQuotaRequestData {
     appid: string;
 }
-interface ClearQuotaData extends CommonResponseData {
+export interface ClearQuotaData extends CommonResponseData {
 }
-interface GetApiQuotaRequestParams extends CommonRequestParams {
+export interface GetApiQuotaRequestParams extends CommonRequestParams {
 }
-interface GetApiQuotaRequestData {
+export interface GetApiQuotaRequestData {
     cgi_path: string;
 }
-interface GetApiQuotaData extends CommonResponseData {
+export interface GetApiQuotaData extends CommonResponseData {
     quota: {
         daily_limit: number;
         used: number;
@@ -26,12 +26,12 @@ interface GetApiQuotaData extends CommonResponseData {
         refresh_second: number;
     };
 }
-interface GetRidInfoRequestParams extends CommonRequestParams {
+export interface GetRidInfoRequestParams extends CommonRequestParams {
 }
-interface GetRidInfoRequestData {
+export interface GetRidInfoRequestData {
     rid: string;
 }
-interface GetRidInfoData extends CommonResponseData {
+export interface GetRidInfoData extends CommonResponseData {
     request: {
         /** 发起请求的时间戳 */
         invoke_time: number;
@@ -47,13 +47,13 @@ interface GetRidInfoData extends CommonResponseData {
         client_ip: string;
     };
 }
-interface ClearQuotaByAppSecretRequestParams {
+export interface ClearQuotaByAppSecretRequestParams {
     appid: string;
     appsecret: string;
 }
-interface ClearQuotaByAppSecretRequestData {
+export interface ClearQuotaByAppSecretRequestData {
 }
-interface ClearQuotaByAppSecretData extends CommonResponseData {
+export interface ClearQuotaByAppSecretData extends CommonResponseData {
 }
 declare const weappOpenApi: {
     /**
