@@ -1,6 +1,8 @@
 import assert from 'power-assert';
 import weappTokenUtil from '../../../../src/server/weapp/weapp-token.api';
 import testConfig from '../../../test.config';
+import fs from 'fs';
+import path from 'path';
 
 describe('weappTokenUtil.getAccessToken', () => {
   test('error: error appid', async () => {
@@ -62,6 +64,14 @@ describe('weappTokenUtil.getStableAccessToken', () => {
     assert.equal(result.status, 'ok');
     assert.equal(result.code, '');
     assert.equal(result.message, '');
+    fs.writeFileSync(
+      path.resolve(process.cwd(), 'tests', 'test.access-token.ts'),
+      `export default {
+  ${testConfig.weapp.appid}:
+    '${result.data?.access_token}',
+};
+`,
+    );
     assert.notEqual(result.data?.access_token, '');
     assert.notEqual(result.data?.expires_in, undefined);
   });

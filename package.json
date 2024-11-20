@@ -1,6 +1,6 @@
 {
   "name": "wechat-sdks",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "WeChat SDKs",
   "author": "happy",
   "private": false,
@@ -39,7 +39,7 @@
     "*.{css,scss}": "stylelint --fix"
   },
   "dependencies": {
-    "almighty-tool": ">=0.0.15"
+    "almighty-tool": ">=0.0.18"
   },
   "devDependencies": {
     "@babel/plugin-syntax-typescript": "7.20.0",

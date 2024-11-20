@@ -6,7 +6,7 @@ export interface PrintedTextOCRRequestData extends CommonImageData {}
 
 export interface PrintedTextOCRData extends CommonResponseData {
   /** 识别结果 */
-  items: {
+  items?: {
     /** 识别出的文本 */
     text: string;
     /** 文本位置信息 */
@@ -30,8 +30,10 @@ export interface PrintedTextOCRData extends CommonResponseData {
     };
   }[];
   /** 图片尺寸 */
-  img_size: {
+  img_size?: {
+    /** 图片宽度 */
     w: number;
+    /** 图片高度 */
     h: number;
   };
 }

@@ -21,7 +21,7 @@ describe('weappOcrApi.printedTextOCR', () => {
     assert.equal(result.data?.img_size?.w, 1065);
     assert.equal(result.data?.img_size?.h, 555);
     assert.deepEqual(
-      result.data?.items.map((item) => item.text),
+      result.data?.items?.map((item) => item.text),
       [
         '08.17',
         'Timeless Earth',

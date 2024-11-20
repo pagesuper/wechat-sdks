@@ -166,7 +166,7 @@ const weappUtil = {
     const formData = new FormData();
 
     if (imgBuffer) {
-      formData.append('img', new Blob([imgBuffer]), 'img');
+      formData.append('img', new Blob([imgBuffer]), 'img.png');
     }
 
     return formData;
